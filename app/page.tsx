@@ -1,101 +1,108 @@
+import MaxWidthWrapper from "@/components/common/MaxWidthWrapper";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { ChevronRightIcon, PlayCircle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
-export default function Home() {
+const page = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="overflow-hidden">
+      <MaxWidthWrapper>
+        <div className="py-20 md:py-28 relative text-center">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-foreground">
+            Easy timestamps for your YouTube videos.
+          </h1>
+          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Generate timestamps for your YouTube descriptions in seconds. Built
+            by creators for creators.
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              href="/signin"
+              className={buttonVariants({
+                variant: "default",
+                size: "lg",
+                className: "group w-44",
+              })}
+            >
+              Get Started
+              <ChevronRightIcon className="ml-2 h-4 w-4 group-hover:translate-x-1 transition" />
+            </Link>
+            <Link
+              href="/about"
+              className={buttonVariants({
+                variant: "outline",
+                size: "lg",
+                className: "w-44",
+              })}
+            >
+              Learn more
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "AI-Powered",
+              description:
+                "Leverage the power of AI to generate timestamps for your YouTube videos.",
+            },
+            {
+              title: "Easy to Use",
+              description:
+                "Our platform is easy to use and takes only seconds to generate timestamps for your YouTube videos.",
+            },
+            {
+              title: "SEO boost",
+              description:
+                "Generating timestamps for your YouTube videos can help improve your SEO.",
+            },
+          ].map((feature, index) => {
+            return (
+              <div
+                className="bg-secondary/50 p-6 rounded-lg hover:shadow-md transition"
+                key={index}
+              >
+                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </div>
+            );
+          })}
+          <div className="col-span-full flex justify-center mt-24">
+            <Button variant="outline" size="lg">
+              <PlayCircle className="mr-2 h-6 w-6" />
+              Watch demo
+            </Button>
+          </div>
+        </div>
+      </MaxWidthWrapper>
+      <div className="bg-gradient-to-b from-background to-secondary/20 py-20 md:py-28">
+        <MaxWidthWrapper>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-4">Built by AlfredWebDev</h2>
+            <p className="text-xl text-muted-foreground">
+              Crafted with passion and expertise
+            </p>
+          </div>
+          <div className="mt-10 relative max-w-3xl mx-auto">
+            <Image
+              src="https://res.cloudinary.com/damqrrryq/image/upload/v1727349411/pexels-divinetechygirl-1181244_tlg3ic.jpg"
+              width={800}
+              height={450}
+              alt="demo image"
+              className="rounded-xl shadow-xl"
+            />
+            <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground px-4 py-2 rounded-md shadow-lg">
+              <Link href="/about" className="font-medium hover:underline">
+                Learn more about the creator
+              </Link>
+            </div>
+          </div>
+        </MaxWidthWrapper>
+      </div>
     </div>
   );
-}
+};
+
+export default page;
