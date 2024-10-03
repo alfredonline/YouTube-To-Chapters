@@ -12,7 +12,6 @@ import {
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -20,6 +19,7 @@ import {
 } from "./ui/pagination";
 import { useEffect, useState } from "react";
 import Clipboard from "clipboard";
+import { FaSadTear } from "react-icons/fa";
 
 const ITEMS_PER_PAGE = 9;
 const ChaptersWrapper = ({ user }: { user: any }) => {
@@ -67,7 +67,18 @@ const ChaptersWrapper = ({ user }: { user: any }) => {
   }, []);
 
   return (
-    <div className="mt-12">
+    <div className="mt-12 min-h-screen">
+      {user?.savedChapters.length === 0 && (
+        <div className="flex flex-col gap-4 mt-12 text-center">
+          <h1 className="text-2xl font-bold flex items-center justify-center gap-2 text-gray-500">
+            No chapters found <FaSadTear className="w-10 h-10" />
+          </h1>
+          <p className="text-gray-500">
+            You don't have any chapters saved. Try generating some chapters for
+            a YouTube video.
+          </p>
+        </div>
+      )}
       {user?.savedChapters && user.savedChapters.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-12 min-h-screen">
           {currentChapters.map((chapter: ChapterSet) => (
@@ -118,42 +129,44 @@ const ChaptersWrapper = ({ user }: { user: any }) => {
           ))}
         </div>
       )}
-      <Pagination className="mt-8">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              href="#"
-              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
-              className={
-                currentPage === 1 ? "pointer-events-none opacity-50" : ""
-              }
-            />
-          </PaginationItem>
-          {[...Array(totalPages)].map((_, index) => (
-            <PaginationItem key={index}>
-              <PaginationLink
+      {user?.savedChapters.length > 0 && (
+        <Pagination className="mt-8">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
                 href="#"
-                onClick={() => setCurrentPage(index + 1)}
-              >
-                {index + 1}
-              </PaginationLink>
+                onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+                className={
+                  currentPage === 1 ? "pointer-events-none opacity-50" : ""
+                }
+              />
             </PaginationItem>
-          ))}
-          <PaginationItem>
-            <PaginationNext
-              href="#"
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(totalPages, prev + 1))
-              }
-              className={
-                currentPage === totalPages
-                  ? "pointer-events-none opacity-50"
-                  : ""
-              }
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+            {[...Array(totalPages)].map((_, index) => (
+              <PaginationItem key={index}>
+                <PaginationLink
+                  href="#"
+                  onClick={() => setCurrentPage(index + 1)}
+                >
+                  {index + 1}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+            <PaginationItem>
+              <PaginationNext
+                href="#"
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+                }
+                className={
+                  currentPage === totalPages
+                    ? "pointer-events-none opacity-50"
+                    : ""
+                }
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      )}
     </div>
   );
 };
