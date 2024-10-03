@@ -1,4 +1,3 @@
-"use server";
 import Stripe from "stripe";
 import { getServerSession, User } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
