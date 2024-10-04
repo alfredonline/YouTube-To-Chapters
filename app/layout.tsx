@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   description: "YouTubeToChapters is a tool that allows you to easily generate timestamps for your videos.",
 };
 
+import { Analytics } from "@vercel/analytics/react"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,6 +35,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
