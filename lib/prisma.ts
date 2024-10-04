@@ -2,15 +2,10 @@ import { PrismaClient } from "@prisma/client";
 
 let prisma: PrismaClient;
 
+// Remove the namespace declaration and use module augmentation
 declare global {
-  namespace NodeJS {
-    interface Global {
-      prisma: PrismaClient;
-    }
-  }
+  var prisma: PrismaClient | undefined;
 }
-
-declare const global: NodeJS.Global & typeof globalThis;
 
 if (process.env.NODE_ENV === "production") {
   prisma = new PrismaClient();

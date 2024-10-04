@@ -9,8 +9,10 @@ export const authOptions = {
         DiscordProvider({
             clientId: process.env.DISCORD_CLIENT_ID!,
             clientSecret: process.env.DISCORD_CLIENT_SECRET!,
+            
         })
-    ]
+    ],
+    secret: process.env.SECRET!,
 } as NextAuthOptions
 
 const handler = NextAuth(authOptions)

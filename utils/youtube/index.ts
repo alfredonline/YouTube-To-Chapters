@@ -44,7 +44,7 @@ export interface VideoDetails {
   uploadDate: string;
   subtitles: Subtitles;
   storyboards: Storyboard[];
-  superTitle: any;
+  superTitle: string;
   likeCount: string;
   channelThumbnail: ChannelThumbnail[];
   channelBadges: string[];
@@ -159,8 +159,6 @@ export async function fetchFromYouTubeApi<T>(
       );
       return null;
     }
-
-    console.log(response.data);
 
     return response.data;
   } catch (error) {

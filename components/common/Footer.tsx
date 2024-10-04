@@ -12,8 +12,7 @@ export default function Footer() {
             <span className="text-lg font-bold">YouTubeToChapters</span>
           </Link>
           <p className="text-gray-500 dark:text-gray-400">
-            YouTubeToChapters is a YouTube video to chapters converter that
-            allows you to easily convert your YouTube videos to chapters.
+            YouTubeToChapters is a tool that allows you to generate timestamps for your YouTube videos.
           </p>
         </div>
         <div className="flex flex-col gap-4">
@@ -30,7 +29,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <h4 className="text-lg font-bold">Follow Us</h4>
+          <h4 className="text-lg font-bold">Get in touch with the creator</h4>
           <div className="flex items-center gap-4">
             <Link
               href="https://www.youtube.com/@alfiewebdev"

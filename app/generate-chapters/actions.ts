@@ -100,8 +100,6 @@ export async function generateChapters(
     };
   }
 
-  console.log("parsedTranscript", parsedTranscript);
-
   const openAiChapters = await generateChaptersWithOpenAI(
     parsedTranscript,
     lengthSeconds
