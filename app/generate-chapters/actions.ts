@@ -1,7 +1,7 @@
 "use server";
 
 import { validateYouTubeLink } from "@/utils/validation";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import {
   getVideoDetails,
@@ -16,7 +16,13 @@ import { revalidatePath } from "next/cache";
 type GenerateChaptersResponse = {
   success: boolean;
   error?: string;
-  data?: any;
+  data?: {
+    title: string;
+    content: string[];
+    userId: string;
+    id: string;
+    createdAt: Date;
+  };
 };
 
 export async function generateChapters(
@@ -99,8 +105,6 @@ export async function generateChapters(
       error: "subtitles_issue",
     };
   }
-
-  console.log("parsedTranscript", parsedTranscript);
 
   const openAiChapters = await generateChaptersWithOpenAI(
     parsedTranscript,

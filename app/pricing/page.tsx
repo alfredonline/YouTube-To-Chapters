@@ -40,6 +40,9 @@ const page = () => {
         <p className="text-xl text-muted-foreground">
           Choose the plan that works best for you. No hidden fees. Fair pricing.
         </p>
+        <p className="text-xl text-muted-foreground">
+          *Maximum video length is 1 hour for all plans*
+        </p>
       </div>
       <div className="flex justify-center items-center text-2xl font-bold mb-12">
         <span className="bg-primary/10 text-primary px-4 py-2 rounded-full">

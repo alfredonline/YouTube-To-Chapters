@@ -1,6 +1,6 @@
 import Stripe from "stripe";
-import { getServerSession, User } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET!, {

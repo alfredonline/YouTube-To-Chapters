@@ -40,7 +40,7 @@ const Page = () => {
             with a focus on web dev.
           </p>
           <a
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            href="https://www.youtube.com/watch?v=8gTcz4Y75kg"
             target="_blank"
             className="mt-4 inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
           >

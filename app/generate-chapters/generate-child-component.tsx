@@ -12,8 +12,6 @@ const Page = () => {
 
   const handleSubmit = async (formData: FormData) => {
     const result = await generateChapters(formData);
-
-    console.log("result", result);
     if (result.success) {
       router.push("/dashboard");
     } else {

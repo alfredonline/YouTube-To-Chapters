@@ -1,7 +1,7 @@
 import Header from "@/components/common/Header";
 import MaxWidthWrapper from "@/components/common/MaxWidthWrapper";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import ChaptersWrapper from "@/components/ChaptersWrapper";
@@ -36,12 +36,16 @@ const Page = async () => {
     },
   });
 
+  if (!user) {
+    return redirect("/signin");
+  }
+
   const manage_link = await generateCustomerPortalLink(
     "" + user?.stripe_customer_id
   );
   const checkout_link = await createCheckoutLink("" + user?.stripe_customer_id);
 
-  const { isEligible, message, remainingGenerations } =
+  const { isEligible, message } =
     await checkChapterCreationEligibility();
 
   return (
@@ -75,7 +79,10 @@ const Page = async () => {
         {isEligible && message}
         {!isEligible && message}
       </div>
-      <ChaptersWrapper user={user} />
+      <ChaptersWrapper user={user && {
+        savedChapters: user.savedChapters,
+        stripe_customer_id: user.stripe_customer_id || ''
+      }} />
     </MaxWidthWrapper>
   );
 };

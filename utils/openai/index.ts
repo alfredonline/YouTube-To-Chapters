@@ -2,6 +2,7 @@
 import { OpenAI } from "openai";
 import { z } from "zod";
 import { zodResponseFormat } from "openai/helpers/zod";
+import { ChapterSet } from "@prisma/client";
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -17,7 +18,7 @@ export async function generateChaptersWithOpenAI(
     timestamp: string;
   }[],
   length: number
-): Promise<any> {
+): Promise<string[] | null> {
   try {
     const response = await client.beta.chat.completions.parse({
       model: "gpt-4o-2024-08-06",
@@ -50,7 +51,6 @@ export async function generateChaptersWithOpenAI(
     }
 
     return response.choices[0].message.parsed.chapters;
-
   } catch (error) {
     console.error(error);
     return null;

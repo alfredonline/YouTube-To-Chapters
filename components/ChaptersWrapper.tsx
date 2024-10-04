@@ -22,7 +22,15 @@ import Clipboard from "clipboard";
 import { FaSadTear } from "react-icons/fa";
 
 const ITEMS_PER_PAGE = 9;
-const ChaptersWrapper = ({ user }: { user: any }) => {
+
+interface ChaptersWrapperProps {
+  user: {
+    savedChapters: ChapterSet[];
+    stripe_customer_id: string;
+  };
+}
+
+const ChaptersWrapper = ({ user }: ChaptersWrapperProps) => {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const totalPages = Math.ceil(user.savedChapters.length / ITEMS_PER_PAGE);
@@ -74,7 +82,7 @@ const ChaptersWrapper = ({ user }: { user: any }) => {
             No chapters found <FaSadTear className="w-10 h-10" />
           </h1>
           <p className="text-gray-500">
-            You don't have any chapters saved. Try generating some chapters for
+            You do not have any chapters saved. Try generating some chapters for
             a YouTube video.
           </p>
         </div>

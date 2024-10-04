@@ -4,7 +4,7 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
 import { Session } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 
 interface NavItemProps {
