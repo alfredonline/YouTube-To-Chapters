@@ -1,7 +1,7 @@
 import Header from "@/components/common/Header";
 import MaxWidthWrapper from "@/components/common/MaxWidthWrapper";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import ChaptersWrapper from "@/components/ChaptersWrapper";

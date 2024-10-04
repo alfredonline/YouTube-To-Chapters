@@ -1,7 +1,7 @@
 "use server";
 
 import { validateYouTubeLink } from "@/utils/validation";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import {
   getVideoDetails,
