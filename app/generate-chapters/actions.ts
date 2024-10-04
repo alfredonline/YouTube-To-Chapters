@@ -16,7 +16,13 @@ import { revalidatePath } from "next/cache";
 type GenerateChaptersResponse = {
   success: boolean;
   error?: string;
-  data?: any;
+  data?: {
+    title: string;
+    content: string[];
+    userId: string;
+    id: string;
+    createdAt: Date;
+  };
 };
 
 export async function generateChapters(

@@ -1,19 +1,25 @@
-import NextAuth, { NextAuthOptions} from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth"
 import DiscordProvider from "next-auth/providers/discord"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import prisma from "@/lib/prisma"
 
-export const authOptions = {
+// Move authOptions to a separate variable
+const nextAuthOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
         DiscordProvider({
             clientId: process.env.DISCORD_CLIENT_ID!,
             clientSecret: process.env.DISCORD_CLIENT_SECRET!,
-            
         })
     ],
     secret: process.env.SECRET!,
-} as NextAuthOptions
+}
 
-const handler = NextAuth(authOptions)
-export { handler as GET, handler as POST}
+// Create the NextAuth handler
+const handler = NextAuth(nextAuthOptions)
+
+// Export the handler as GET and POST
+export { handler as GET, handler as POST }
+
+// If you need to use authOptions elsewhere, export it as a named export
+export { nextAuthOptions as authOptions }
