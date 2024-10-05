@@ -49,7 +49,7 @@ const TermsOfService = () => {
         </ul>
 
         <h2 className="text-xl font-semibold mb-3">6. Indemnification</h2>
-        <p className="mb-4">You agree to defend, indemnify, and hold harmless YouTubeToChapters and its affiliates from and against any claims, liabilities, damages, losses, and expenses, including without limitation reasonable attorney's fees and costs, arising out of or in any way connected with your access to or use of the service or your violation of these Terms of Service.</p>
+        <p className="mb-4">You agree to defend, indemnify, and hold harmless YouTubeToChapters and its affiliates from and against any claims, liabilities, damages, losses, and expenses, including without limitation reasonable attorney fees and costs, arising out of or in any way connected with your access to or use of the service or your violation of these Terms of Service.</p>
 
         <h2 className="text-xl font-semibold mb-3">7. Changes to Terms</h2>
         <p className="mb-4">We reserve the right to modify these terms at any time. Please check this page periodically for updates.</p>

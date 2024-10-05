@@ -54,7 +54,7 @@ const PrivacyPolicy = () => {
         <h2 className="text-xl font-semibold mb-3">6. Cookies and Tracking</h2>
         <p className="mb-4">We use cookies and similar technologies to improve user experience and analyze usage patterns. You can manage cookie preferences through your browser settings.</p>
 
-        <h2 className="text-xl font-semibold mb-3">7. Children's Privacy</h2>
+        <h2 className="text-xl font-semibold mb-3">7. Privacy of Children</h2>
         <p className="mb-4">Our service is not intended for children under 13. We do not knowingly collect personal information from children under 13.</p>
 
         <h2 className="text-xl font-semibold mb-3">8. Changes to This Policy</h2>
